@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml>
+    <clientes>
+        <cliente>
+            <dni>77994245A</dni>
+            <nombre>Mike</nombre>
+            <anio_nacimiento>2001</anio_nacimiento>
+            <animales_vistos>
+                <animal_visto>An11</animal_visto>
+                <animal_visto>An22</animal_visto>
+            </animales_vistos>
+        </cliente>
+        <cliente>
+            <dni>12345678W</dni>
+            <nombre>Ana</nombre>
+            <anio_nacimiento>1999</anio_nacimiento>
+            <animales_vistos/>
+        </cliente>
+        <cliente>
+            <dni>12312345E</dni>
+            <nombre>Alberto</nombre>
+            <anio_nacimiento>2005</anio_nacimiento>
+            <animales_vistos/>
+        </cliente>
+        <cliente>
+            <dni>11223344Z</dni>
+            <nombre>Francisco</nombre>
+            <anio_nacimiento>1997</anio_nacimiento>
+            <animales_vistos/>
+        </cliente>
+        <cliente>
+            <dni>78945612T</dni>
+            <nombre>Siiii</nombre>
+            <anio_nacimiento>2020</anio_nacimiento>
+            <animales_vistos/>
+        </cliente>
+    </clientes>
+</xml>

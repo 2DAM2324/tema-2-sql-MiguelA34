@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml>
+    <zonas>
+        <zona>
+            <id>Zn13</id>
+            <bioma>sabana</bioma>
+            <capacidad>13</capacidad>
+            <superficie>22.0</superficie>
+            <animales_que_habitan/>
+            <trabajador_que_cuida/>
+        </zona>
+        <zona>
+            <id>Zn05</id>
+            <bioma>jungla</bioma>
+            <capacidad>25</capacidad>
+            <superficie>55.0</superficie>
+            <animales_que_habitan>
+                <animal_que_habita>An22</animal_que_habita>
+                <animal_que_habita>An35</animal_que_habita>
+            </animales_que_habitan>
+            <trabajador_que_cuida/>
+        </zona>
+        <zona>
+            <id>Zn01</id>
+            <bioma>Tundra</bioma>
+            <capacidad>52</capacidad>
+            <superficie>150.0</superficie>
+            <animales_que_habitan/>
+            <trabajador_que_cuida/>
+        </zona>
+        <zona>
+            <id>Zn72</id>
+            <bioma>selva</bioma>
+            <capacidad>54</capacidad>
+            <superficie>123.0</superficie>
+            <animales_que_habitan/>
+            <trabajador_que_cuida/>
+        </zona>
+    </zonas>
+</xml>
