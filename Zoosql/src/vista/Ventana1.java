@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zoo;
+package vista;
 
 import controlador.Controlador;
 import java.awt.Color;
@@ -47,10 +47,10 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import zoo.Cliente;
-import zoo.Animal;
-import zoo.Zona;
-import zoo.Trabajador;
+import modelo.Cliente;
+import modelo.Animal;
+import modelo.Zona;
+import modelo.Trabajador;
 
 /**
  *
@@ -325,32 +325,40 @@ public class Ventana1 extends javax.swing.JFrame {
             .addGroup(jPanel_ciudadLayout.createSequentialGroup()
                 .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel_ciudadLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel_nombre_ciudad)
-                            .addComponent(jLabel_pais)
-                            .addComponent(jLabel_num_habitantes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dni, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                            .addComponent(nombre_cli)
-                            .addComponent(anio_cli)
-                            .addComponent(animal_visto))
-                        .addGap(38, 38, 38)
-                        .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(save_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cancel_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                            .addComponent(insertar_animal_a_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel_ciudadLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(add_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(delete_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(modifie_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(12, Short.MAX_VALUE))
-            .addComponent(jSeparator2)
+                        .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_ciudadLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_nombre_ciudad)
+                                    .addComponent(jLabel_pais)
+                                    .addComponent(jLabel_num_habitantes, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dni, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(nombre_cli)
+                                    .addComponent(anio_cli))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(save_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cancel_cli, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                            .addGroup(jPanel_ciudadLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(add_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(delete_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(modifie_cli, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+            .addGroup(jPanel_ciudadLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(32, 32, 32)
+                .addComponent(animal_visto, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(insertar_animal_a_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel_ciudadLayout.setVerticalGroup(
             jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -380,14 +388,14 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jLabel_num_habitantes)
                     .addComponent(cancel_cli)
                     .addComponent(anio_cli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(animal_visto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(insertar_animal_a_cliente))
-                .addGap(62, 62, 62))
+                .addContainerGap(216, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Cliente", jPanel_ciudad);
@@ -587,12 +595,12 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(animales_habitan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(insertar_animal_a_zona)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(trabajador_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(insertar_trabajador))
-                .addGap(22, 22, 22))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Zona", jPanel_libro);
@@ -758,7 +766,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_libro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_anio_publicacion1)
                     .addComponent(num_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
             .addGroup(jPanel_libro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_libro1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -984,9 +992,9 @@ public class Ventana1 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(jTabbedPane)
-                .addGap(55, 55, 55))
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1026,8 +1034,6 @@ public class Ventana1 extends javax.swing.JFrame {
         nombre_tr.setText("");
         num_telefono.setText("");
         gerente.setText("");
-        
-        controller.ExportarTrabajadores();
     }//GEN-LAST:event_add_trActionPerformed
 
     /**
@@ -1056,7 +1062,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private void delete_trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_trActionPerformed
         trabajadores.remove(Trabajador.getSelectedRow());
         PrintTrabajadores();
-        controller.ExportarTrabajadores();
     }//GEN-LAST:event_delete_trActionPerformed
 
     /**
@@ -1094,8 +1099,6 @@ public class Ventana1 extends javax.swing.JFrame {
         nombre_tr.setText("");
         num_telefono.setText("");
         gerente.setText("");
-        
-        controller.ExportarTrabajadores();
     }//GEN-LAST:event_save_trActionPerformed
 
     private void cod_trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cod_trActionPerformed
@@ -1138,8 +1141,6 @@ public class Ventana1 extends javax.swing.JFrame {
         bioma.setText("");
         capacidad.setText("");
         superficie.setText("");
-        
-        controller.ExportarZonas();
     }//GEN-LAST:event_add_zonaActionPerformed
     
     /**
@@ -1172,7 +1173,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private void delete_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_zonaActionPerformed
         zonas.remove(Zona.getSelectedRow());
         PrintZonas();
-        controller.ExportarZonas();
     }//GEN-LAST:event_delete_zonaActionPerformed
 
     /**
@@ -1214,8 +1214,6 @@ public class Ventana1 extends javax.swing.JFrame {
         bioma.setText("");
         capacidad.setText("");
         superficie.setText("");
-        
-        controller.ExportarZonas();
     }//GEN-LAST:event_save_zonaActionPerformed
 
     private void id_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_zonaActionPerformed
@@ -1233,7 +1231,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private void delete_anActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_anActionPerformed
         animales.remove(Animal.getSelectedRow());
         PrintAnimales();
-        controller.ExportarAnimales();
     }//GEN-LAST:event_delete_anActionPerformed
     
     /**
@@ -1289,8 +1286,6 @@ public class Ventana1 extends javax.swing.JFrame {
         nombre_cientifico.setText("");
         clase.setText("");
         anio_nac_an.setText("");
-        
-       controller.ExportarAnimales();
     }//GEN-LAST:event_add_anActionPerformed
 
     /**
@@ -1333,8 +1328,6 @@ public class Ventana1 extends javax.swing.JFrame {
         nombre_cientifico.setText("");
         clase.setText("");
         anio_nac_an.setText("");
-        
-        controller.ExportarAnimales();
     }//GEN-LAST:event_save_anActionPerformed
 
     private void cod_anActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cod_anActionPerformed
@@ -1379,8 +1372,6 @@ public class Ventana1 extends javax.swing.JFrame {
         dni.setText("");
         nombre_cli.setText("");
         anio_cli.setText("");
-        
-        controller.ExportarClientes();
     }//GEN-LAST:event_save_cliActionPerformed
 
     private void dniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dniActionPerformed
@@ -1394,7 +1385,6 @@ public class Ventana1 extends javax.swing.JFrame {
     private void delete_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_cliActionPerformed
         clientes.remove(Cliente.getSelectedRow());
         PrintClientes();
-        controller.ExportarClientes();
     }//GEN-LAST:event_delete_cliActionPerformed
 
     /**
@@ -1444,8 +1434,6 @@ public class Ventana1 extends javax.swing.JFrame {
         dni.setText("");
         nombre_cli.setText("");
         anio_cli.setText("");
-        
-        controller.ExportarClientes();
     }//GEN-LAST:event_add_cliActionPerformed
 
     private void ClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteMouseClicked
@@ -1490,7 +1478,6 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         }
         cliente_aux = null;
-        controller.ExportarClientes();
     }//GEN-LAST:event_insertar_animal_a_clienteActionPerformed
 
     /**
@@ -1518,8 +1505,6 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         }
         zona_aux = null;
-        
-        controller.ExportarZonas();
     }//GEN-LAST:event_insertar_animal_a_zonaActionPerformed
 
     /**
@@ -1547,8 +1532,6 @@ public class Ventana1 extends javax.swing.JFrame {
             }
         }
         animal_aux = null;
-        
-        controller.ExportarAnimales();
     }//GEN-LAST:event_insertar_clienteActionPerformed
 
     /**
@@ -1569,8 +1552,6 @@ public class Ventana1 extends javax.swing.JFrame {
         }
         
         animal_aux = null;
-        
-        controller.ExportarAnimales();
     }//GEN-LAST:event_Insertar_zona_habitadaActionPerformed
 
     /**
@@ -1591,8 +1572,6 @@ public class Ventana1 extends javax.swing.JFrame {
         }
         
         zona_aux = null;
-        
-        controller.ExportarZonas();
     }//GEN-LAST:event_insertar_trabajadorActionPerformed
 
     /**

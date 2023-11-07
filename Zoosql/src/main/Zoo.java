@@ -7,7 +7,7 @@ package main;
 import java.io.IOException;
 import controlador.Controlador;
 import org.xml.sax.SAXException;
-import zoo.Ventana1;
+import vista.Ventana1;
 import java.io.IOException;
 
 /**
