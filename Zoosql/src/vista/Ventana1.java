@@ -150,39 +150,7 @@ public class Ventana1 extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jScrollPane4 = new javax.swing.JScrollPane();
         animales_vistos = new javax.swing.JTable();
-        jPanel_libro = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        Zona = new javax.swing.JTable();
-        jLabel_nombre_libro = new javax.swing.JLabel();
-        jLabel_autor = new javax.swing.JLabel();
-        jLabel_edad_recomendada = new javax.swing.JLabel();
-        capacidad = new javax.swing.JTextField();
-        id_zona = new javax.swing.JTextField();
-        save_zona = new javax.swing.JButton();
-        cancel_zona = new javax.swing.JButton();
-        delete_zona = new javax.swing.JButton();
-        modifie_zona = new javax.swing.JButton();
-        add_zona = new javax.swing.JButton();
-        jLabel_anio_publicacion = new javax.swing.JLabel();
-        superficie = new javax.swing.JTextField();
-        bioma = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        animales_habitan = new javax.swing.JTextField();
-        insertar_animal_a_zona = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        trabajador_encargado = new javax.swing.JTextField();
-        insertar_trabajador = new javax.swing.JButton();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        show_animales_habitan = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        codigo_trabjador_encargada = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        gerente_trabajador_encargado = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        nombre_trabajador_encargado = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        numero_telefono_trabajador_encargado = new javax.swing.JLabel();
+        eliminar_animal_visto = new javax.swing.JButton();
         jPanel_libro1 = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
         Trabajador = new javax.swing.JTable();
@@ -235,6 +203,41 @@ public class Ventana1 extends javax.swing.JFrame {
         capacidad_zona_habitada = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         superficie_zona_habitada = new javax.swing.JLabel();
+        eliminar_cliente_visto = new javax.swing.JButton();
+        jPanel_libro = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Zona = new javax.swing.JTable();
+        jLabel_nombre_libro = new javax.swing.JLabel();
+        jLabel_autor = new javax.swing.JLabel();
+        jLabel_edad_recomendada = new javax.swing.JLabel();
+        capacidad = new javax.swing.JTextField();
+        id_zona = new javax.swing.JTextField();
+        save_zona = new javax.swing.JButton();
+        cancel_zona = new javax.swing.JButton();
+        delete_zona = new javax.swing.JButton();
+        modifie_zona = new javax.swing.JButton();
+        add_zona = new javax.swing.JButton();
+        jLabel_anio_publicacion = new javax.swing.JLabel();
+        superficie = new javax.swing.JTextField();
+        bioma = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        animales_habitan = new javax.swing.JTextField();
+        insertar_animal_a_zona = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        trabajador_encargado = new javax.swing.JTextField();
+        insertar_trabajador = new javax.swing.JButton();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        show_animales_habitan = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
+        codigo_trabjador_encargada = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        gerente_trabajador_encargado = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        nombre_trabajador_encargado = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        numero_telefono_trabajador_encargado = new javax.swing.JLabel();
+        eliminar_animal_habita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -375,6 +378,13 @@ public class Ventana1 extends javax.swing.JFrame {
             animales_vistos.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        eliminar_animal_visto.setText("Eliminar");
+        eliminar_animal_visto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_animal_vistoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_ciudadLayout = new javax.swing.GroupLayout(jPanel_ciudad);
         jPanel_ciudad.setLayout(jPanel_ciudadLayout);
         jPanel_ciudadLayout.setHorizontalGroup(
@@ -418,6 +428,10 @@ public class Ventana1 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane4)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_ciudadLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminar_animal_visto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36))
         );
         jPanel_ciudadLayout.setVerticalGroup(
             jPanel_ciudadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,304 +470,12 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(insertar_animal_a_cliente))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(eliminar_animal_visto)
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         jTabbedPane.addTab("Cliente", jPanel_ciudad);
-
-        Zona.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id_zona", "Bioma", "Capacidad", "Superficie"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        Zona.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ZonaMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(Zona);
-        if (Zona.getColumnModel().getColumnCount() > 0) {
-            Zona.getColumnModel().getColumn(0).setResizable(false);
-            Zona.getColumnModel().getColumn(1).setResizable(false);
-            Zona.getColumnModel().getColumn(2).setResizable(false);
-            Zona.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        jLabel_nombre_libro.setText("Id_zona");
-
-        jLabel_autor.setText("Bioma");
-
-        jLabel_edad_recomendada.setText("Capacidad");
-
-        id_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                id_zonaActionPerformed(evt);
-            }
-        });
-
-        save_zona.setText("Guardar");
-        save_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_zonaActionPerformed(evt);
-            }
-        });
-
-        cancel_zona.setText("Cancelar");
-        cancel_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancel_zonaActionPerformed(evt);
-            }
-        });
-
-        delete_zona.setText("Borrar");
-        delete_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delete_zonaActionPerformed(evt);
-            }
-        });
-
-        modifie_zona.setText("Modificar");
-        modifie_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifie_zonaActionPerformed(evt);
-            }
-        });
-
-        add_zona.setText("Añadir");
-        add_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                add_zonaActionPerformed(evt);
-            }
-        });
-
-        jLabel_anio_publicacion.setText("Superficie");
-
-        jLabel4.setText("Cod Animales");
-
-        animales_habitan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                animales_habitanActionPerformed(evt);
-            }
-        });
-
-        insertar_animal_a_zona.setText("Insertar");
-        insertar_animal_a_zona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertar_animal_a_zonaActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("Trabajador enc");
-
-        insertar_trabajador.setText("Insertar");
-        insertar_trabajador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                insertar_trabajadorActionPerformed(evt);
-            }
-        });
-
-        show_animales_habitan.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Codigo", "Nombre", "Clase", "Nombre_cientifico", "Anio_nacimiento"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane6.setViewportView(show_animales_habitan);
-        if (show_animales_habitan.getColumnModel().getColumnCount() > 0) {
-            show_animales_habitan.getColumnModel().getColumn(0).setResizable(false);
-            show_animales_habitan.getColumnModel().getColumn(1).setResizable(false);
-            show_animales_habitan.getColumnModel().getColumn(2).setResizable(false);
-            show_animales_habitan.getColumnModel().getColumn(3).setResizable(false);
-            show_animales_habitan.getColumnModel().getColumn(4).setResizable(false);
-        }
-
-        jLabel7.setText("Codigo Trabajador encargado");
-
-        codigo_trabjador_encargada.setText("no asociado");
-
-        jLabel11.setText("Gerente Tr En");
-
-        gerente_trabajador_encargado.setText("no asociado");
-
-        jLabel14.setText("Nombre Tr En");
-
-        nombre_trabajador_encargado.setText("no asociado");
-
-        jLabel16.setText("Numero Telefono Tr En");
-
-        numero_telefono_trabajador_encargado.setText("no asociado");
-
-        javax.swing.GroupLayout jPanel_libroLayout = new javax.swing.GroupLayout(jPanel_libro);
-        jPanel_libro.setLayout(jPanel_libroLayout);
-        jPanel_libroLayout.setHorizontalGroup(
-            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(modifie_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(add_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(delete_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel_nombre_libro)
-                                    .addComponent(jLabel_autor)
-                                    .addComponent(jLabel_edad_recomendada)
-                                    .addComponent(jLabel_anio_publicacion))
-                                .addGap(24, 24, 24)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(superficie, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(id_zona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
-                                    .addComponent(capacidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bioma, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(38, 38, 38)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(save_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cancel_zona, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(animales_habitan)
-                                    .addComponent(trabajador_encargado, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(insertar_animal_a_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(insertar_trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6)
-                            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(codigo_trabjador_encargada, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gerente_trabajador_encargado))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14)
-                                    .addComponent(nombre_trabajador_encargado))
-                                .addGap(40, 40, 40)
-                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel16)
-                                    .addComponent(numero_telefono_trabajador_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
-        );
-        jPanel_libroLayout.setVerticalGroup(
-            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_libroLayout.createSequentialGroup()
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(add_zona)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(modifie_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(delete_zona))
-                    .addGroup(jPanel_libroLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(42, 42, 42)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_nombre_libro)
-                    .addComponent(id_zona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_autor)
-                    .addComponent(save_zona)
-                    .addComponent(bioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_edad_recomendada)
-                    .addComponent(capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancel_zona))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel_anio_publicacion)
-                    .addComponent(superficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(animales_habitan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertar_animal_a_zona)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(trabajador_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(insertar_trabajador))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel16))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigo_trabjador_encargada)
-                    .addComponent(gerente_trabajador_encargado)
-                    .addComponent(nombre_trabajador_encargado)
-                    .addComponent(numero_telefono_trabajador_encargado))
-                .addContainerGap(34, Short.MAX_VALUE))
-        );
-
-        jTabbedPane.addTab("Zona", jPanel_libro);
 
         Trabajador.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -916,7 +638,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 .addGroup(jPanel_libro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_anio_publicacion1)
                     .addComponent(num_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(384, Short.MAX_VALUE))
+                .addContainerGap(417, Short.MAX_VALUE))
             .addGroup(jPanel_libro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel_libro1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -1080,6 +802,13 @@ public class Ventana1 extends javax.swing.JFrame {
 
         superficie_zona_habitada.setText("no asociada");
 
+        eliminar_cliente_visto.setText("Eliminar");
+        eliminar_cliente_visto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_cliente_vistoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel_bibliotecaLayout = new javax.swing.GroupLayout(jPanel_biblioteca);
         jPanel_biblioteca.setLayout(jPanel_bibliotecaLayout);
         jPanel_bibliotecaLayout.setHorizontalGroup(
@@ -1153,6 +882,10 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(superficie_zona_habitada, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_bibliotecaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(eliminar_cliente_visto, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(55, 55, 55))
         );
         jPanel_bibliotecaLayout.setVerticalGroup(
             jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1204,13 +937,15 @@ public class Ventana1 extends javax.swing.JFrame {
                     .addComponent(Insertar_zona_habitada))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(eliminar_cliente_visto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel_bibliotecaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id_zona_habitada)
                     .addComponent(bioma_zona_habitada)
@@ -1220,6 +955,316 @@ public class Ventana1 extends javax.swing.JFrame {
         );
 
         jTabbedPane.addTab("Animal", jPanel_biblioteca);
+
+        Zona.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id_zona", "Bioma", "Capacidad", "Superficie"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Double.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Zona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ZonaMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(Zona);
+        if (Zona.getColumnModel().getColumnCount() > 0) {
+            Zona.getColumnModel().getColumn(0).setResizable(false);
+            Zona.getColumnModel().getColumn(1).setResizable(false);
+            Zona.getColumnModel().getColumn(2).setResizable(false);
+            Zona.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jLabel_nombre_libro.setText("Id_zona");
+
+        jLabel_autor.setText("Bioma");
+
+        jLabel_edad_recomendada.setText("Capacidad");
+
+        id_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                id_zonaActionPerformed(evt);
+            }
+        });
+
+        save_zona.setText("Guardar");
+        save_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                save_zonaActionPerformed(evt);
+            }
+        });
+
+        cancel_zona.setText("Cancelar");
+        cancel_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancel_zonaActionPerformed(evt);
+            }
+        });
+
+        delete_zona.setText("Borrar");
+        delete_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_zonaActionPerformed(evt);
+            }
+        });
+
+        modifie_zona.setText("Modificar");
+        modifie_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifie_zonaActionPerformed(evt);
+            }
+        });
+
+        add_zona.setText("Añadir");
+        add_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_zonaActionPerformed(evt);
+            }
+        });
+
+        jLabel_anio_publicacion.setText("Superficie");
+
+        jLabel4.setText("Cod Animales");
+
+        animales_habitan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                animales_habitanActionPerformed(evt);
+            }
+        });
+
+        insertar_animal_a_zona.setText("Insertar");
+        insertar_animal_a_zona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertar_animal_a_zonaActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Trabajador enc");
+
+        insertar_trabajador.setText("Insertar");
+        insertar_trabajador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertar_trabajadorActionPerformed(evt);
+            }
+        });
+
+        show_animales_habitan.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre", "Clase", "Nombre_cientifico", "Anio_nacimiento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane6.setViewportView(show_animales_habitan);
+        if (show_animales_habitan.getColumnModel().getColumnCount() > 0) {
+            show_animales_habitan.getColumnModel().getColumn(0).setResizable(false);
+            show_animales_habitan.getColumnModel().getColumn(1).setResizable(false);
+            show_animales_habitan.getColumnModel().getColumn(2).setResizable(false);
+            show_animales_habitan.getColumnModel().getColumn(3).setResizable(false);
+            show_animales_habitan.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jLabel7.setText("Codigo Trabajador encargado");
+
+        codigo_trabjador_encargada.setText("no asociado");
+
+        jLabel11.setText("Gerente Tr En");
+
+        gerente_trabajador_encargado.setText("no asociado");
+
+        jLabel14.setText("Nombre Tr En");
+
+        nombre_trabajador_encargado.setText("no asociado");
+
+        jLabel16.setText("Numero Telefono Tr En");
+
+        numero_telefono_trabajador_encargado.setText("no asociado");
+
+        eliminar_animal_habita.setText("Eliminar");
+        eliminar_animal_habita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_animal_habitaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel_libroLayout = new javax.swing.GroupLayout(jPanel_libro);
+        jPanel_libro.setLayout(jPanel_libroLayout);
+        jPanel_libroLayout.setHorizontalGroup(
+            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(modifie_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(add_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(delete_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_nombre_libro)
+                                    .addComponent(jLabel_autor)
+                                    .addComponent(jLabel_edad_recomendada)
+                                    .addComponent(jLabel_anio_publicacion))
+                                .addGap(24, 24, 24)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(superficie, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(id_zona, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
+                                    .addComponent(capacidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bioma, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGap(38, 38, 38)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(save_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(cancel_zona, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(animales_habitan)
+                                    .addComponent(trabajador_encargado, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(insertar_animal_a_zona, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(insertar_trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6)
+                            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                        .addComponent(codigo_trabjador_encargada, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(gerente_trabajador_encargado)
+                                        .addGap(41, 41, 41))
+                                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel14)
+                                    .addComponent(nombre_trabajador_encargado))
+                                .addGap(40, 40, 40)
+                                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel16)
+                                    .addComponent(numero_telefono_trabajador_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_libroLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(eliminar_animal_habita, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89))
+        );
+        jPanel_libroLayout.setVerticalGroup(
+            jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_libroLayout.createSequentialGroup()
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(add_zona)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modifie_zona, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delete_zona))
+                    .addGroup(jPanel_libroLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(42, 42, 42)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_nombre_libro)
+                    .addComponent(id_zona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_autor)
+                    .addComponent(save_zona)
+                    .addComponent(bioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_edad_recomendada)
+                    .addComponent(capacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cancel_zona))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel_anio_publicacion)
+                    .addComponent(superficie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(animales_habitan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertar_animal_a_zona)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(trabajador_encargado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(insertar_trabajador))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(eliminar_animal_habita)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel14)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGroup(jPanel_libroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigo_trabjador_encargada)
+                    .addComponent(gerente_trabajador_encargado)
+                    .addComponent(nombre_trabajador_encargado)
+                    .addComponent(numero_telefono_trabajador_encargado))
+                .addGap(25, 25, 25))
+        );
+
+        jTabbedPane.addTab("Zona", jPanel_libro);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1711,7 +1756,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
             }
         }
-        cliente_aux = null;
+        PrintAnimalesVistos();
     }//GEN-LAST:event_insertar_animal_a_clienteActionPerformed
 
     /**
@@ -1738,7 +1783,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
             }
         }
-        zona_aux = null;
+        PrintAnimalesHabitan();
     }//GEN-LAST:event_insertar_animal_a_zonaActionPerformed
 
     /**
@@ -1765,7 +1810,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
             }
         }
-        animal_aux = null;
+        PrintClientesVistos();
     }//GEN-LAST:event_insertar_clienteActionPerformed
 
     /**
@@ -1784,8 +1829,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 animal_aux.setZonaHabitada(zn);
             }
         }
-        
-        animal_aux = null;
+        PrintZonaHabitada();
     }//GEN-LAST:event_Insertar_zona_habitadaActionPerformed
 
     /**
@@ -1804,9 +1848,23 @@ public class Ventana1 extends javax.swing.JFrame {
                 zona_aux.setTrabajadorEncargado(tr);
             }
         }
-        
-        zona_aux = null;
+        PrintTrabajadorEncargado();
     }//GEN-LAST:event_insertar_trabajadorActionPerformed
+
+    private void eliminar_animal_vistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_animal_vistoActionPerformed
+        cliente_aux.getVAnimales().remove(Animal.getSelectedRow());
+        PrintAnimalesVistos();
+    }//GEN-LAST:event_eliminar_animal_vistoActionPerformed
+
+    private void eliminar_cliente_vistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_cliente_vistoActionPerformed
+        animal_aux.getVClientesVistos().remove(Cliente.getSelectedRow());
+        PrintClientesVistos();
+    }//GEN-LAST:event_eliminar_cliente_vistoActionPerformed
+
+    private void eliminar_animal_habitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_animal_habitaActionPerformed
+        zona_aux.getVAnimalesHabitan().remove(Animal.getSelectedRow());
+        PrintAnimalesHabitan();
+    }//GEN-LAST:event_eliminar_animal_habitaActionPerformed
 
     /**
      * @brief método que permite mostrar todos los clientes al usuario
@@ -1973,7 +2031,6 @@ public class Ventana1 extends javax.swing.JFrame {
             
             tm_animal.addRow(new Object[]{new_codigo, new_clase, new_nombre, new_nombre_cient, new_anio});
         }
-        cliente_aux = null;
         animales_vistos.setModel(tm_animal);
     }
     
@@ -2003,7 +2060,6 @@ public class Ventana1 extends javax.swing.JFrame {
             
             tm_animal.addRow(new Object[]{new_codigo, new_clase, new_nombre, new_nombre_cient, new_anio});
         }
-        zona_aux = null;
         show_animales_habitan.setModel(tm_animal);
     }
     
@@ -2029,7 +2085,6 @@ public class Ventana1 extends javax.swing.JFrame {
             
             tm_cliente.addRow(new Object[]{new_dni, new_nombre, new_anio});
         }
-        animal_aux = null;
         show_clientes_vistos.setModel(tm_cliente);
     }
     
@@ -2043,7 +2098,6 @@ public class Ventana1 extends javax.swing.JFrame {
         catch(Exception ex){
             ex.printStackTrace();
         }
-        animal_aux = null;
     }
     
     private void PrintTrabajadorEncargado(){
@@ -2056,7 +2110,6 @@ public class Ventana1 extends javax.swing.JFrame {
         else{
             gerente_trabajador_encargado.setText("no");
         }
-        zona_aux = null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -2093,6 +2146,9 @@ public class Ventana1 extends javax.swing.JFrame {
     private javax.swing.JButton delete_tr;
     private javax.swing.JButton delete_zona;
     public javax.swing.JTextField dni;
+    private javax.swing.JButton eliminar_animal_habita;
+    private javax.swing.JButton eliminar_animal_visto;
+    private javax.swing.JButton eliminar_cliente_visto;
     private javax.swing.JTextField gerente;
     private javax.swing.JLabel gerente_trabajador_encargado;
     private javax.swing.JTextField id_zona;
