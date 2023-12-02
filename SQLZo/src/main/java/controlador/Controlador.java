@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 import java.awt.Button;
 import java.awt.TextField;
 import java.io.IOException;
@@ -46,7 +47,7 @@ import org.w3c.dom.Document;
 
 /**
  *
- * @author Malt34
+ * @author elect
  */
 public class Controlador {
     private Ventana1 ventana;

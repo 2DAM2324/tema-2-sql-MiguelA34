@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Malt34
+ * @author elect
  */
 public class Animal {
     private String cod_animal;

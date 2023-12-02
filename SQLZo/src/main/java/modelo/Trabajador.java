@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author Malt34
+ * @author elect
  */
 public class Trabajador {
     private String cod_trabajador;

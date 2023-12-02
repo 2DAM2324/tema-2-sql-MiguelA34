@@ -1,7 +1,7 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
+
 package main;
 
 import java.io.IOException;
@@ -12,9 +12,10 @@ import java.io.IOException;
 
 /**
  *
- * @author Malt34
+ * @author elect
  */
-public class Zoo {
+public class SQLZo {
+
     public static void main(String[] args) {
         try{
             Ventana1 ventana = new Ventana1();

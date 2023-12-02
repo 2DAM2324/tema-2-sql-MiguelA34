@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Malt34
+ * @author elect
  */
 public class Zona {
     private String id_zona;
@@ -114,9 +114,4 @@ public class Zona {
         
         return cadena + cadena1;
     }
-
-    
-
-    
-    
 }
