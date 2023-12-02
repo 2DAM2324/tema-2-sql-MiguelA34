@@ -82,4 +82,12 @@ public class Controlador {
         conexion.ImportarAnimales(animales, zonas);
         conexion.ImportarVer(animales, clientes);
     }
+    
+    public void AgregarCliente(Cliente cli){
+        conexion.AgregarCliente(cli);
+    }
+    
+    public void AgregarAnimal(Animal an){
+        conexion.AgregarAnimal(an);
+    }
 }

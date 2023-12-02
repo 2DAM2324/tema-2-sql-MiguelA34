@@ -1558,6 +1558,7 @@ public class Ventana1 extends javax.swing.JFrame {
         new_an.setAnioNacNni(anio);
         
         animales.add(new_an);
+        controller.AgregarAnimal(new_an);
         PrintAnimales();
         
         cod_an.setText("");
@@ -1708,6 +1709,7 @@ public class Ventana1 extends javax.swing.JFrame {
         new_cli.setAnioNac(anio);
         
         clientes.add(new_cli);
+        controller.AgregarCliente(new_cli);
         PrintClientes();
         
         dni.setText("");

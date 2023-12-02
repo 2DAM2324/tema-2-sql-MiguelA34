@@ -269,4 +269,34 @@ public class Conexion {
             }
         }
     }
+    
+    public void AgregarAnimal(Animal animal){
+        String sent = "INSERT INTO animales (codigo, nombre, clase, nombre_cientifico, anio_nac, id_zona) VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, animal.getCodAnimal());
+            sentencia.setString(2, animal.getNombreAni());
+            sentencia.setString(3, animal.getClase());
+            sentencia.setString(4, animal.getNombreCientifico());
+            sentencia.setInt(5, animal.getAnioNacAni());
+            sentencia.setString(6, animal.getZonaHabitada().getIdZona());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
 }
