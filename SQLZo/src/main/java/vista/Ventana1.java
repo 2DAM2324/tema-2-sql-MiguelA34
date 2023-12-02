@@ -242,7 +242,7 @@ public class Ventana1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
-                //formWindowClosing(evt);
+                formWindowClosing(evt);
             }
         });
 
@@ -2110,6 +2110,10 @@ public class Ventana1 extends javax.swing.JFrame {
         else{
             gerente_trabajador_encargado.setText("no");
         }
+    }
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt){
+        controller.getConexion().CerrarConexion();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

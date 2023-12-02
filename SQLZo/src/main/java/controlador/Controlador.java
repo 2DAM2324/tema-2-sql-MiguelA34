@@ -40,7 +40,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.Result;
-import modelo.Connection;
+import modelo.Conexion;
 
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Element;
@@ -60,75 +60,17 @@ public class Controlador {
     private ArrayList<Animal> animales;
     private ArrayList<Zona> zonas;
     private ArrayList<Trabajador> trabajadores;
-    private Connection conexion;
+    private Conexion conexion;
     
     public Controlador(ArrayList<Cliente> new_clientes, ArrayList<Animal> new_animales, ArrayList<Zona> new_zona, ArrayList<Trabajador> new_trabajador){
         clientes = new_clientes;
         animales = new_animales;
         zonas = new_zona;
         trabajadores = new_trabajador;
+        conexion = new Conexion();
     }
     
-    public void CargarSQL(){
-        // Conexion con la base de datos
-        try{
-        Class.forName("org.sqlite.JDBC");
-        }
-        catch(Exception E){
-            System.out.println("nop");
-        }
-        
-        conexion = null;
-        
-        try{
-            String url = "jdbc:sqlite:/home/ana/prueba.db";
-            conexion = DriverManager.getConnection(url);
-            
-            System.out.println("Conexion establecida olee");
-        }
-        catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        catch(Exception e){}
-        
-        //Consulta a la base de datos
-        String cons = "SELECT * FROM producto WHERE precio==3";
-        PreparedStatement consulta = null;
-        ResultSet resultado = null;
-        
-        try{
-            consulta = conexion.prepareStatement(cons);
-            resultado = consulta.executeQuery();
-            
-            while(resultado.next()){
-                System.out.println("producto: "+resultado.getString(1));
-                System.out.println("precio: "+resultado.getInt(2));
-            }
-        }
-        catch(SQLException sqle){
-            sqle.printStackTrace();
-        }
-        finally{
-            if (consulta != null){
-                try{
-                   consulta.close();
-                    resultado.close(); 
-                }
-                catch(SQLException sqle2){
-                    sqle2.printStackTrace();
-                }
-                
-            }
-        }
-    }
-    
-    public void CerrarConexion(){
-        try{
-            if (conexion != null)
-                conexion.close();
-        }
-        catch(SQLException e2){
-            System.out.println(e2.getMessage());
-        }
+    public Conexion getConexion(){
+        return conexion;
     }
 }
