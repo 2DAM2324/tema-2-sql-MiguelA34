@@ -22,7 +22,8 @@ CREATE TABLE zonas(
     bioma VARCHAR2(45),
     capacidad INTEGER,
     superficie FLOAT,
-    trabajador VARCHAR2(5)
+    trabajador VARCHAR2(5),
+    FOREIGN KEY (trabajador) REFERENCES trabajadores(codigo)
 );
 
 CREATE TABLE animales(

@@ -68,9 +68,18 @@ public class Controlador {
         zonas = new_zona;
         trabajadores = new_trabajador;
         conexion = new Conexion();
+        ImportarBaseDatos();
     }
     
     public Conexion getConexion(){
         return conexion;
+    }
+    
+    public void ImportarBaseDatos(){
+        conexion.ImportarClientes(clientes);
+        conexion.ImportarTrabajadores(trabajadores);
+        conexion.ImportarZonas(trabajadores, zonas);
+        conexion.ImportarAnimales(animales, zonas);
+        conexion.ImportarVer(animales, clientes);
     }
 }

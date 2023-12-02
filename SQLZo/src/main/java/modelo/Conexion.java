@@ -7,7 +7,10 @@ package modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -40,29 +43,203 @@ public class Conexion {
         }
     }
     
-    /*public void InsertarClientes(){
-        String sent = "INSERT INTO producto (nombre, precio) VALUES (?, ?)";
-        PreparedStatement sentencia = null;
+    public void ImportarClientes(ArrayList<Cliente> clientes){
+        String cons = "SELECT * FROM clientes";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
         
         try{
-            sentencia = conn.prepareStatement(sent);
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
             
-            sentencia.setString(1, "patata");
-            sentencia.setInt(2, 3);
-            
-            sentencia.executeUpdate();
+            while(resultado.next()){
+                Cliente cli = new Cliente();
+                cli.setDNI(resultado.getString(1));
+                cli.setNombreCli(resultado.getString(2));
+                cli.setAnioNac(Integer.valueOf(resultado.getString(3)));
+                clientes.add(cli);
+            }
         }
         catch(SQLException sqle){
             sqle.printStackTrace();
         }
         finally{
-            try{
-                if (sentencia != null)
-                    sentencia.close();
-            }
-            catch(SQLException sqle2){
-                sqle2.printStackTrace();
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
             }
         }
-    }*/
+    }
+    
+    public void ImportarAnimales(ArrayList<Animal> animales, ArrayList<Zona> zonas){
+        String cons = "SELECT * FROM animales";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        
+        try{
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
+            
+            while(resultado.next()){
+                Animal an = new Animal();
+                an.setCodAnimal(resultado.getString(1));
+                an.setNombreAni(resultado.getString(2));
+                an.setClase(resultado.getString(3));
+                an.setNombreCientifico(resultado.getString(4));
+                an.setAnioNacNni(Integer.valueOf(resultado.getString(5)));
+                String zona = resultado.getString(6);
+                for(Zona zn : zonas){
+                    if(zn.getIdZona().equals(zona)){
+                        an.setZonaHabitada(zn);
+                    }
+                }
+                animales.add(an);
+            }
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
+            }
+        }
+    }
+    
+    public void ImportarZonas(ArrayList<Trabajador> trabajadores, ArrayList<Zona> zonas){
+        String cons = "SELECT * FROM zonas";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        
+        try{
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
+            
+            while(resultado.next()){
+                Zona zn = new Zona();
+                zn.setIdZona(resultado.getString(1));
+                zn.setBioma(resultado.getString(2));
+                zn.setCapacidad(Integer.valueOf(resultado.getString(3)));
+                zn.setSuperficie(Double.parseDouble(resultado.getString(4)));
+                String trabajador = resultado.getString(5);
+                for(Trabajador tr : trabajadores){
+                    if(tr.getCodTrabajador().equals(trabajador)){
+                        zn.setTrabajadorEncargado(tr);
+                    }
+                }
+                zonas.add(zn);
+            }
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
+            }
+        }
+    }
+    
+    public void ImportarTrabajadores(ArrayList<Trabajador> trabajadores){
+        String cons = "SELECT * FROM trabajadores";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        
+        try{
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
+            
+            while(resultado.next()){
+                Trabajador tr = new Trabajador();
+                tr.setCodTrabajador(resultado.getString(1));
+                tr.setNombreTr(resultado.getString(2));
+                tr.setNumTelefono(resultado.getString(3));
+                String gerente = resultado.getString(4);
+                if(gerente.equals("si")){
+                    tr.setGerente(true);
+                }
+                else{
+                    tr.setGerente(false);
+                }
+                trabajadores.add(tr);
+            }
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
+            }
+        }
+    }
+    
+    public void ImportarVer(ArrayList<Animal> animales, ArrayList<Cliente> clientes){
+        String cons = "SELECT * FROM ver";
+        PreparedStatement consulta = null;
+        ResultSet resultado = null;
+        
+        try{
+            consulta = conn.prepareStatement(cons);
+            resultado = consulta.executeQuery();
+            
+            while(resultado.next()){
+                String cliente = resultado.getString(1);
+                String animal = resultado.getString(2);
+                for(Cliente cli : clientes){
+                    if(cli.getDNI().equals(cliente)){
+                        for(Animal an : animales){
+                            if(an.getCodAnimal().equals(animal)){
+                                cli.getVAnimales().add(an);
+                                an.getVClientesVistos().add(cli);
+                            }
+                        }
+                    }
+                }
+                
+            }
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            if (consulta != null){
+                try{
+                   consulta.close();
+                    resultado.close(); 
+                }
+                catch(SQLException sqle2){
+                    sqle2.printStackTrace();
+                }
+                
+            }
+        }
+    }
 }
