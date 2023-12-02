@@ -242,4 +242,31 @@ public class Conexion {
             }
         }
     }
+    
+    public void AgregarCliente(Cliente cliente){
+        String sent = "INSERT INTO clientes (dni, nombre, anio_nac) VALUES (?, ?, ?)";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, cliente.getDNI());
+            sentencia.setString(2, cliente.getNombreCli());
+            sentencia.setInt(3, cliente.getAnioNac());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
 }
