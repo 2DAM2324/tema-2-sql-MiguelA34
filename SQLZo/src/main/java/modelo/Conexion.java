@@ -391,7 +391,7 @@ public class Conexion {
     
         
     public void EliminarCliente(Cliente cliente){
-        String sent = "REMOVE FROM clientes WHERE id==?";
+        String sent = "REMOVE FROM clientes WHERE id = ?";
         PreparedStatement sentencia = null;
         
         try{

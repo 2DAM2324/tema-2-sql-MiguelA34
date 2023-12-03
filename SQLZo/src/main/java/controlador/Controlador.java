@@ -102,4 +102,8 @@ public class Controlador {
     public void AgregarVer(Cliente cli, Animal an){
         conexion.AgregarVer(cli, an);
     }
+    
+    public void EliminarCliente(Cliente cli){
+        conexion.EliminarCliente(cli);
+    }
 }

@@ -1666,6 +1666,7 @@ public class Ventana1 extends javax.swing.JFrame {
      */
     private void delete_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_cliActionPerformed
         clientes.remove(Cliente.getSelectedRow());
+        controller.EliminarCliente(clientes.get(Cliente.getSelectedRow()));
         PrintClientes();
     }//GEN-LAST:event_delete_cliActionPerformed
 
