@@ -1511,6 +1511,7 @@ public class Ventana1 extends javax.swing.JFrame {
      */
     private void delete_anActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_anActionPerformed
         animales.remove(Animal.getSelectedRow());
+        controller.EliminarAnimal(animales.get(Animal.getSelectedRow()));
         PrintAnimales();
     }//GEN-LAST:event_delete_anActionPerformed
     

@@ -103,7 +103,12 @@ public class Controlador {
         conexion.AgregarVer(cli, an);
     }
     
+    
     public void EliminarCliente(Cliente cli){
         conexion.EliminarCliente(cli);
+    }
+    
+    public void EliminarAnimal(Animal an){
+        conexion.EliminarAnimal(an);
     }
 }

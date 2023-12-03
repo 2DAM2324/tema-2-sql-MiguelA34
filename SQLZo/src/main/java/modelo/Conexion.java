@@ -391,13 +391,38 @@ public class Conexion {
     
         
     public void EliminarCliente(Cliente cliente){
-        String sent = "REMOVE FROM clientes WHERE id = ?";
+        String sent = "REMOVE FROM clientes WHERE dni = ?";
         PreparedStatement sentencia = null;
         
         try{
             sentencia = conn.prepareStatement(sent);
             
             sentencia.setString(1, cliente.getDNI());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void EliminarAnimal(Animal animal){
+        String sent = "REMOVE FROM animales WHERE codigo = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, animal.getCodAnimal());
             
             sentencia.executeUpdate();
         }
