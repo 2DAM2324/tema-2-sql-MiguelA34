@@ -24,6 +24,9 @@ public class Conexion {
         AbrirConexion();
     }
     
+    /**
+     * @brief método que abre la conexión con la base de datos
+     */
     public void AbrirConexion(){
         try {
             String url = "jdbc:sqlite:zoo.db";
@@ -34,6 +37,9 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que cierra la conexión con la base de datos
+     */
     public void CerrarConexion(){
         try {
             conn.close();
@@ -43,6 +49,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que importa los clientes de la base de datos
+     * @param clientes, donde se van a guardar los clientes
+     */
     public void ImportarClientes(ArrayList<Cliente> clientes){
         String cons = "SELECT * FROM clientes";
         PreparedStatement consulta = null;
@@ -77,6 +87,12 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que importa los animales de la base de datos
+     * @param animales, donde se van a guardar los animales
+     * @param zonas, de aqui se extrae la zona en la que habita un animal
+     * @pre se tienen que importar primero las zonas
+     */
     public void ImportarAnimales(ArrayList<Animal> animales, ArrayList<Zona> zonas){
         String cons = "SELECT * FROM animales";
         PreparedStatement consulta = null;
@@ -119,6 +135,12 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que importa los zonas de la base de datos
+     * @param zonas, donde se van a guardar los zonas
+     * @param trabajadores, de aqui se extrae la trabajadores en la que se encarga de una zona
+     * @pre se tienen que importar primero las trabajadores
+     */
     public void ImportarZonas(ArrayList<Trabajador> trabajadores, ArrayList<Zona> zonas){
         String cons = "SELECT * FROM zonas";
         PreparedStatement consulta = null;
@@ -173,6 +195,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que importa los trabajadores de la base de datos
+     * @param trabajadores, donde se van a guardar los trabajadores
+     */
     public void ImportarTrabajadores(ArrayList<Trabajador> trabajadores){
         String cons = "SELECT * FROM trabajadores";
         PreparedStatement consulta = null;
@@ -214,6 +240,12 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que importa la relacion N:M de la base de datos
+     * @param animales, donde se van a guardar los clientes vistos
+     * @param clientes, donde se van a guardar los animales vistos
+     * @pre se tienen que importar primero los animales y los clientes
+     */
     public void ImportarVer(ArrayList<Animal> animales, ArrayList<Cliente> clientes){
         String cons = "SELECT * FROM ver";
         PreparedStatement consulta = null;
@@ -256,6 +288,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que agrega un cliente a la base de datos
+     * @param cliente, el cliente que se va a insertar
+     */
     public void AgregarCliente(Cliente cliente){
         String sent = "INSERT INTO clientes (dni, nombre, anio_nac) VALUES (?, ?, ?)";
         PreparedStatement sentencia = null;
@@ -283,6 +319,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que agrega un animal a la base de datos
+     * @param animal, el animal que se va a insertar
+     */
     public void AgregarAnimal(Animal animal){
         String sent = "INSERT INTO animales (codigo, nombre, clase, nombre_cientifico, anio_nac, id_zona) VALUES (?, ?, ?, ?, ?, ?)";
         PreparedStatement sentencia = null;
@@ -313,6 +353,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que agrega un trabajador a la base de datos
+     * @param trabajador, el trabajador que se va a insertar
+     */
     public void AgregarTrabajador(Trabajador trabajador){
         String sent = "INSERT INTO trabajadores (codigo, nombre, numero_telefono, gerente) VALUES (?, ?, ?, ?)";
         PreparedStatement sentencia = null;
@@ -346,6 +390,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que agrega un zona a la base de datos
+     * @param zona, el zona que se va a insertar
+     */
     public void AgregarZona(Zona zona){
         String sent = "INSERT INTO zonas (id, bioma, capacidad, superficie, trabajador) VALUES (?, ?, ?, ?, ?);";
         PreparedStatement sentencia = null;
@@ -376,6 +424,11 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que agrega la relacion N:M a la base de datos
+     * @param cliente, el cliente que se va a insertar
+     * @param animal, el animal que se va a insertar
+     */
     public void AgregarVer(Cliente cliente, Animal animal){
         String sent = "INSERT INTO ver (cliente, cod_animal) VALUES (?, ?);";
         PreparedStatement sentencia = null;
@@ -402,7 +455,10 @@ public class Conexion {
         }
     }
     
-        
+    /**
+     * @brief método que elimina un cliente a la base de datos
+     * @param cliente, el cliente que se va a elimina
+     */
     public void EliminarCliente(Cliente cliente){
         String sent = "DELETE FROM clientes WHERE dni = ?;";
         PreparedStatement sentencia = null;
@@ -428,6 +484,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que elimina un animal a la base de datos
+     * @param animal, el animal que se va a elimina
+     */
     public void EliminarAnimal(Animal animal){
         String sent = "DELETE FROM animales WHERE codigo = ?;";
         PreparedStatement sentencia = null;
@@ -453,6 +513,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que elimina un trabajador a la base de datos
+     * @param trabajador, el trabajador que se va a elimina
+     */
     public void EliminarTrabajador(Trabajador trabajador){
         String sent = "DELETE FROM trabajadores WHERE codigo = ?;";
         PreparedStatement sentencia = null;
@@ -478,6 +542,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que elimina un zona a la base de datos
+     * @param zona, el zona que se va a elimina
+     */
     public void EliminarZonas(Zona zona){
         String sent = "DELETE FROM zonas WHERE id = ?;";
         PreparedStatement sentencia = null;
@@ -503,6 +571,11 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que elimina una relacion N:M a la base de datos
+     * @param an, el animal que se va a elimina
+     * @param cli, el cliente que se va a elimina
+     */
     public void EliminarVer(Animal an, Cliente cli){
         String sent = "DELETE FROM ver WHERE cod_animal = ? AND cliente = ?;";
         PreparedStatement sentencia = null;
@@ -529,6 +602,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica una cliente a la base de datos
+     * @param cli, el cliente que se va a modifica
+     */
     public void ModificarCliente(Cliente cli){
         String sent = "UPDATE clientes SET nombre = ?, anio_nac = ? WHERE dni = ?";
         PreparedStatement sentencia = null;
@@ -556,6 +633,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica una animal a la base de datos
+     * @param an, el animal que se va a modifica
+     */
     public void ModificarAnimal(Animal an){
         String sent = "UPDATE animales SET nombre = ?, clase = ?, nombre_cientifico = ?, anio_nac = ? WHERE codigo = ?";
         PreparedStatement sentencia = null;
@@ -585,6 +666,11 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica la zona de un animal a la base de datos
+     * @param zn, la zona que se va a modificar
+     * @param an, el animal que va a ser modificado
+     */
     public void ModificarZonaHabitada(Animal an, Zona zn){
         String sent = "UPDATE animales SET id_zona = ? WHERE codigo = ?";
         PreparedStatement sentencia = null;
@@ -611,6 +697,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica una trabajador a la base de datos
+     * @param tr, el trabajador que se va a modifica
+     */
     public void ModificarTrabajador(Trabajador tr){
         String sent = "UPDATE trabajadores SET nombre = ?, numero_telefono = ?, gerente = ? WHERE codigo = ?";
         PreparedStatement sentencia = null;
@@ -644,6 +734,10 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica una zona a la base de datos
+     * @param zn, el zona que se va a modifica
+     */
     public void ModificarZona(Zona zn){
         String sent = "UPDATE zonas SET bioma = ?, capacidad = ?, superficie = ? WHERE id = ?";
         PreparedStatement sentencia = null;
@@ -672,6 +766,11 @@ public class Conexion {
         }
     }
     
+    /**
+     * @brief método que modifica la trabajdor de un zona a la base de datos
+     * @param zn, la zona que se va a modificar
+     * @param tr, el trabajdor que va a ser modificado
+     */
     public void ModificarTrabajadorEncargado(Zona zn, Trabajador tr){
         String sent = "UPDATE zonas SET trabajador = ? WHERE id = ?";
         PreparedStatement sentencia = null;
