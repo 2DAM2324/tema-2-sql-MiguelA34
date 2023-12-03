@@ -90,4 +90,12 @@ public class Controlador {
     public void AgregarAnimal(Animal an){
         conexion.AgregarAnimal(an);
     }
+    
+    public void AgregarTrabajador(Trabajador tr){
+        conexion.AgregarTrabajador(tr);
+    }
+    
+    public void AgregarZona(Zona zn){
+        conexion.AgregarZona(zn);
+    }
 }

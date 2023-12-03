@@ -299,4 +299,67 @@ public class Conexion {
             }
         }
     }
+    
+    public void AgregarTrabajador(Trabajador trabajador){
+        String sent = "INSERT INTO trabajadores (codigo, nombre, numero_telefono, gerente) VALUES (?, ?, ?, ?)";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, trabajador.getCodTrabajador());
+            sentencia.setString(2, trabajador.getNombreTr());
+            sentencia.setString(3, trabajador.getNumTelefono());
+            if(trabajador.getGerente() == true){
+                sentencia.setString(4, "si");
+            }
+            else{
+                sentencia.setString(4, "no");
+            }
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void AgregarZona(Zona zona){
+        String sent = "INSERT INTO zonas (id, bioma, capacidad, superficie, trabajador) VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, zona.getIdZona());
+            sentencia.setString(2, zona.getBioma());
+            sentencia.setInt(3, zona.getCapacidad());
+            Float num = (float) Double.valueOf(zona.getSuperficie()).floatValue();
+            sentencia.setFloat(4, num);
+            sentencia.setString(5, zona.getTrabajadorEncargado().getCodTrabajador());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
 }

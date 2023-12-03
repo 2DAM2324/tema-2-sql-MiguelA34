@@ -1307,6 +1307,7 @@ public class Ventana1 extends javax.swing.JFrame {
         }
         
         trabajadores.add(new_tr);
+        controller.AgregarTrabajador(new_tr);
         PrintTrabajadores();
         
         cod_tr.setText("");
@@ -1414,6 +1415,7 @@ public class Ventana1 extends javax.swing.JFrame {
         new_zn.setSuperficie(new_superficie);
         
         zonas.add(new_zn);
+        controller.AgregarZona(new_zn);
         PrintZonas();
         
         id_zona.setText("");
