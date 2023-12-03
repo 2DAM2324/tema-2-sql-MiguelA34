@@ -132,8 +132,21 @@ public class Conexion {
                 Zona zn = new Zona();
                 zn.setIdZona(resultado.getString(1));
                 zn.setBioma(resultado.getString(2));
-                zn.setCapacidad(Integer.valueOf(resultado.getString(3)));
-                zn.setSuperficie(Double.parseDouble(resultado.getString(4)));
+                
+                if(resultado.getInt(3) == 0){
+                    zn.setCapacidad(0);
+                }
+                else{
+                    zn.setCapacidad(Integer.valueOf(resultado.getString(3)));
+                }
+                
+                if(resultado.getFloat(4) == 0.0){
+                    zn.setSuperficie(0.0);
+                }
+                else{
+                    zn.setSuperficie(Double.parseDouble(resultado.getString(4)));
+                }
+                
                 String trabajador = resultado.getString(5);
                 for(Trabajador tr : trabajadores){
                     if(tr.getCodTrabajador().equals(trabajador)){
@@ -391,7 +404,7 @@ public class Conexion {
     
         
     public void EliminarCliente(Cliente cliente){
-        String sent = "REMOVE FROM clientes WHERE dni = ?;";
+        String sent = "DELETE FROM clientes WHERE dni = ?;";
         PreparedStatement sentencia = null;
         
         try{
@@ -416,7 +429,7 @@ public class Conexion {
     }
     
     public void EliminarAnimal(Animal animal){
-        String sent = "REMOVE FROM animales WHERE codigo = ?;";
+        String sent = "DELETE FROM animales WHERE codigo = ?;";
         PreparedStatement sentencia = null;
         
         try{
@@ -441,7 +454,7 @@ public class Conexion {
     }
     
     public void EliminarTrabajador(Trabajador trabajador){
-        String sent = "REMOVE FROM trabajadores WHERE codigo = ?;";
+        String sent = "DELETE FROM trabajadores WHERE codigo = ?;";
         PreparedStatement sentencia = null;
         
         try{
@@ -466,7 +479,7 @@ public class Conexion {
     }
     
     public void EliminarZonas(Zona zona){
-        String sent = "REMOVE FROM zonas WHERE id = ?;";
+        String sent = "DELETE FROM zonas WHERE id = ?;";
         PreparedStatement sentencia = null;
         
         try{
@@ -491,7 +504,7 @@ public class Conexion {
     }
     
     public void EliminarVer(Animal an, Cliente cli){
-        String sent = "REMOVE FROM zonas WHERE cod_animal = ? AND cliente = ?;";
+        String sent = "DELETE FROM ver WHERE cod_animal = ? AND cliente = ?;";
         PreparedStatement sentencia = null;
         
         try{

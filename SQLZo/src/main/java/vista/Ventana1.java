@@ -1340,8 +1340,8 @@ public class Ventana1 extends javax.swing.JFrame {
      * @param evt 
      */
     private void delete_trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_trActionPerformed
-        trabajadores.remove(Trabajador.getSelectedRow());
         controller.EliminarTrabajador(trabajadores.get(Trabajador.getSelectedRow()));
+        trabajadores.remove(Trabajador.getSelectedRow());
         PrintTrabajadores();
     }//GEN-LAST:event_delete_trActionPerformed
 
@@ -1454,8 +1454,8 @@ public class Ventana1 extends javax.swing.JFrame {
      * @param evt 
      */
     private void delete_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_zonaActionPerformed
-        zonas.remove(Zona.getSelectedRow());
         controller.EliminarZonas(zonas.get(Zona.getSelectedRow()));
+        zonas.remove(Zona.getSelectedRow());
         PrintZonas();
     }//GEN-LAST:event_delete_zonaActionPerformed
 
@@ -1482,8 +1482,8 @@ public class Ventana1 extends javax.swing.JFrame {
         zona_aux.setBioma(bioma.getText());
         
         try{
-            cp = Integer.valueOf(anio_cli.getText());
-            sp = Double.valueOf(superficie.getText());
+            cp = Integer.parseInt(capacidad.getText());
+            sp = Double.parseDouble(superficie.getText());
         }
         catch(Exception ex){
             ex.printStackTrace();
@@ -1515,8 +1515,12 @@ public class Ventana1 extends javax.swing.JFrame {
      * @param evt 
      */
     private void delete_anActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_anActionPerformed
-        animales.remove(Animal.getSelectedRow());
+        for(Cliente cli : animales.get(Animal.getSelectedRow()).getVClientesVistos()){
+            controller.EliminarVer(animales.get(Animal.getSelectedRow()), cli);
+        }
+        
         controller.EliminarAnimal(animales.get(Animal.getSelectedRow()));
+        animales.remove(Animal.getSelectedRow());
         PrintAnimales();
     }//GEN-LAST:event_delete_anActionPerformed
     
@@ -1673,8 +1677,12 @@ public class Ventana1 extends javax.swing.JFrame {
      * @param evt 
      */
     private void delete_cliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_cliActionPerformed
-        clientes.remove(Cliente.getSelectedRow());
+        for(Animal an : clientes.get(Cliente.getSelectedRow()).getVAnimales()){
+            controller.EliminarVer(an, clientes.get(Cliente.getSelectedRow()));
+        }
+        
         controller.EliminarCliente(clientes.get(Cliente.getSelectedRow()));
+        clientes.remove(Cliente.getSelectedRow());
         PrintClientes();
     }//GEN-LAST:event_delete_cliActionPerformed
 
@@ -1869,8 +1877,8 @@ public class Ventana1 extends javax.swing.JFrame {
     }//GEN-LAST:event_insertar_trabajadorActionPerformed
 
     private void eliminar_animal_vistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_animal_vistoActionPerformed
-        cliente_aux.getVAnimales().remove(Animal.getSelectedRow());
         controller.EliminarVer(animales.get(Animal.getSelectedRow()), cliente_aux);
+        //cliente_aux.getVAnimales().remove(Animal.getSelectedRow());
         PrintAnimalesVistos();
     }//GEN-LAST:event_eliminar_animal_vistoActionPerformed
 
@@ -1890,29 +1898,19 @@ public class Ventana1 extends javax.swing.JFrame {
      * @post se habrá imprimido los clientes, 
      */
     private void PrintClientes(){
-        if(tm_cliente.getRowCount() > 0){
+        while (tm_cliente.getRowCount() > 0) {
             tm_cliente.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_cliente.getRowCount(); i++){
-            tm_cliente.removeRow(i);
-        }
-        
-        String new_dni = "";
-        String new_nombre = "";
-        int new_anio = 0;
-        
-        //este bucle inserta cada cliente a cada fila del modelo
-        for(int i=0; i < clientes.size(); i++){
-            new_dni = clientes.get(i).getDNI();
-            new_nombre = clientes.get(i).getNombreCli();
-            new_anio = clientes.get(i).getAnioNac();
-            
+
+        // Inserta cada cliente en una fila del modelo
+        for (Cliente cliente : clientes) {
+            String new_dni = cliente.getDNI();
+            String new_nombre = cliente.getNombreCli();
+            int new_anio = cliente.getAnioNac();
             tm_cliente.addRow(new Object[]{new_dni, new_nombre, new_anio});
         }
-        
-        //asigna el modelo al JTable de cliente
+
+        // Asigna el modelo actualizado al JTable de cliente
         Cliente.setModel(tm_cliente);
     }
     
@@ -1921,33 +1919,22 @@ public class Ventana1 extends javax.swing.JFrame {
      * @post se habrán imprimido los animales, 
      */
     private void PrintAnimales(){
-        if(tm_animal.getRowCount() > 0){
+        while (tm_animal.getRowCount() > 0) {
             tm_animal.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_animal.getRowCount(); i++){
-            tm_animal.removeRow(i);
-        }
-        
-        String new_cod = "";
-        String new_nombre = "";
-        String new_clase = "";
-        String new_nombre_cientifico = "";
-        int new_anio = 0;
-        
-        //este bucle inserta cada animal a cada fila del modelo
-        for(int i=0; i < animales.size(); i++){
-            new_cod = animales.get(i).getCodAnimal();
-            new_nombre = animales.get(i).getNombreAni();
-            new_clase = animales.get(i).getClase();
-            new_nombre_cientifico = animales.get(i).getNombreCientifico();
-            new_anio = animales.get(i).getAnioNacAni();
-            
+
+        // Inserta cada animal en una fila del modelo
+        for (Animal animal : animales) {
+            String new_cod = animal.getCodAnimal();
+            String new_nombre = animal.getNombreAni();
+            String new_clase = animal.getClase();
+            String new_nombre_cientifico = animal.getNombreCientifico();
+            int new_anio = animal.getAnioNacAni();
+
             tm_animal.addRow(new Object[]{new_cod, new_nombre, new_clase, new_nombre_cientifico, new_anio});
         }
-        
-        //asigna el modelo al JTable de animal
+
+        // Asigna el modelo actualizado al JTable de animal
         Animal.setModel(tm_animal);
     }
     
@@ -1956,31 +1943,22 @@ public class Ventana1 extends javax.swing.JFrame {
      * @post se habrá imprimido los clientes, 
      */
     private void PrintZonas(){
-        if(tm_zona.getRowCount() > 0){
+        // Elimina todas las filas existentes del modelo
+        while (tm_zona.getRowCount() > 0) {
             tm_zona.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_zona.getRowCount(); i++){
-            tm_zona.removeRow(i);
-        }
-        
-        String new_id = "";
-        String new_bioma = "";
-        int new_capacidad = 0;
-        double new_superficie = 0.0;
-        
-        //este bucle inserta cada zona a cada fila del modelo
-        for(int i=0; i < zonas.size(); i++){
-            new_id = zonas.get(i).getIdZona();
-            new_bioma = zonas.get(i).getBioma();
-            new_capacidad = zonas.get(i).getCapacidad();
-            new_superficie = zonas.get(i).getSuperficie();
-            
+
+        // Inserta cada zona en una fila del modelo
+        for (Zona zona : zonas) {
+            String new_id = zona.getIdZona();
+            String new_bioma = zona.getBioma();
+            int new_capacidad = zona.getCapacidad();
+            double new_superficie = zona.getSuperficie();
+
             tm_zona.addRow(new Object[]{new_id, new_bioma, new_capacidad, new_superficie});
         }
-        
-        //asigna el modelo al JTable de zona
+
+        // Asigna el modelo actualizado al JTable de zona
         Zona.setModel(tm_zona);
     }
     
@@ -1990,120 +1968,83 @@ public class Ventana1 extends javax.swing.JFrame {
      * @post se habrá imprimido los trabajadores
      */
     private void PrintTrabajadores(){
-        if(tm_trabajador.getRowCount() > 0){
+        // Elimina todas las filas existentes del modelo
+        while (tm_trabajador.getRowCount() > 0) {
             tm_trabajador.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_trabajador.getRowCount(); i++){
-            tm_trabajador.removeRow(i);
-        }
-        
-        String new_codigo = "";
-        String new_nombre = "";
-        String new_numero = "";
-        String new_gerente = "";
-        
-        //este bucle inserta cada zona a cada fila del modelo
-        for(int i=0; i < trabajadores.size(); i++){
-            new_codigo = trabajadores.get(i).getCodTrabajador();
-            new_nombre = trabajadores.get(i).getNombreTr();
-            new_numero = trabajadores.get(i).getNumTelefono();
-            
-            if(trabajadores.get(i).getGerente() == true){
-                new_gerente = "si";
-            }
-            else{
-                new_gerente = "no";
-            }
-            
+
+        // Inserta cada trabajador en una fila del modelo
+        for (Trabajador trabajador : trabajadores) {
+            String new_codigo = trabajador.getCodTrabajador();
+            String new_nombre = trabajador.getNombreTr();
+            String new_numero = trabajador.getNumTelefono();
+            String new_gerente = trabajador.getGerente() ? "si" : "no";
+
             tm_trabajador.addRow(new Object[]{new_codigo, new_gerente, new_nombre, new_numero});
         }
-        
-        //asigna el modelo al JTable de trabajador
+
+        // Asigna el modelo actualizado al JTable de trabajador
         Trabajador.setModel(tm_trabajador);
     }
     
     private void PrintAnimalesVistos(){
-        if(tm_animal.getRowCount() > 0){
+        // Elimina todas las filas existentes del modelo
+        while (tm_animal.getRowCount() > 0) {
             tm_animal.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_animal.getRowCount(); i++){
-            tm_animal.removeRow(i);
-        }
-        
-        String new_codigo = "";
-        String new_nombre = "";
-        String new_clase = "";
-        String new_nombre_cient = "";
-        int new_anio;
-        
-        //este bucle inserta cada zona a cada fila del modelo
-        for(int i=0; i < cliente_aux.getVAnimales().size(); i++){
-            new_codigo = cliente_aux.getVAnimales().get(i).getCodAnimal();
-            new_nombre = cliente_aux.getVAnimales().get(i).getNombreAni();
-            new_clase = cliente_aux.getVAnimales().get(i).getClase();
-            new_nombre_cient = cliente_aux.getVAnimales().get(i).getNombreCientifico();
-            new_anio = cliente_aux.getVAnimales().get(i).getAnioNacAni();
-            
+
+        // Inserta cada animal visitado en una fila del modelo
+        for (Animal animal : cliente_aux.getVAnimales()) {
+            String new_codigo = animal.getCodAnimal();
+            String new_nombre = animal.getNombreAni();
+            String new_clase = animal.getClase();
+            String new_nombre_cient = animal.getNombreCientifico();
+            int new_anio = animal.getAnioNacAni();
+
             tm_animal.addRow(new Object[]{new_codigo, new_clase, new_nombre, new_nombre_cient, new_anio});
         }
+
+        // Asigna el modelo actualizado al JTable de animales visitados
         animales_vistos.setModel(tm_animal);
     }
     
     private void PrintAnimalesHabitan(){
-        if(tm_animal.getRowCount() > 0){
+        // Elimina todas las filas existentes del modelo
+        while (tm_animal.getRowCount() > 0) {
             tm_animal.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_animal.getRowCount(); i++){
-            tm_animal.removeRow(i);
-        }
-        
-        String new_codigo = "";
-        String new_nombre = "";
-        String new_clase = "";
-        String new_nombre_cient = "";
-        int new_anio;
-        
-        //este bucle inserta cada zona a cada fila del modelo
-        for(int i=0; i < zona_aux.getVAnimalesHabitan().size(); i++){
-            new_codigo = zona_aux.getVAnimalesHabitan().get(i).getCodAnimal();
-            new_nombre = zona_aux.getVAnimalesHabitan().get(i).getNombreAni();
-            new_clase = zona_aux.getVAnimalesHabitan().get(i).getClase();
-            new_nombre_cient = zona_aux.getVAnimalesHabitan().get(i).getNombreCientifico();
-            new_anio = zona_aux.getVAnimalesHabitan().get(i).getAnioNacAni();
-            
+
+        // Inserta cada animal habitante en una fila del modelo
+        for (Animal animal : zona_aux.getVAnimalesHabitan()) {
+            String new_codigo = animal.getCodAnimal();
+            String new_nombre = animal.getNombreAni();
+            String new_clase = animal.getClase();
+            String new_nombre_cient = animal.getNombreCientifico();
+            int new_anio = animal.getAnioNacAni();
+
             tm_animal.addRow(new Object[]{new_codigo, new_clase, new_nombre, new_nombre_cient, new_anio});
         }
+
+        // Asigna el modelo actualizado al JTable de animales que habitan
         show_animales_habitan.setModel(tm_animal);
     }
     
     private void PrintClientesVistos(){
-        if(tm_cliente.getRowCount() > 0){
+        // Elimina todas las filas existentes del modelo
+        while (tm_cliente.getRowCount() > 0) {
             tm_cliente.removeRow(0);
         }
-        
-        //elimina cada fila del modelo, esto se hace porque luego se copia el ArrayList entero
-        for(int i=0; i < tm_cliente.getRowCount(); i++){
-            tm_cliente.removeRow(i);
-        }
-        
-        String new_dni = "";
-        String new_nombre = "";
-        int new_anio;
-        
-        //este bucle inserta cada zona a cada fila del modelo
-        for(int i=0; i < animal_aux.getVClientesVistos().size(); i++){
-            new_dni = animal_aux.getVClientesVistos().get(i).getDNI();
-            new_nombre = animal_aux.getVClientesVistos().get(i).getNombreCli();
-            new_anio = animal_aux.getVClientesVistos().get(i).getAnioNac();
-            
+
+        // Inserta cada cliente que visitó en una fila del modelo
+        for (Cliente cliente : animal_aux.getVClientesVistos()) {
+            String new_dni = cliente.getDNI();
+            String new_nombre = cliente.getNombreCli();
+            int new_anio = cliente.getAnioNac();
+
             tm_cliente.addRow(new Object[]{new_dni, new_nombre, new_anio});
         }
+
+        // Asigna el modelo actualizado al JTable de clientes vistos
         show_clientes_vistos.setModel(tm_cliente);
     }
     
