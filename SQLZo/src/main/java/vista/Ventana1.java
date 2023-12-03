@@ -1341,6 +1341,7 @@ public class Ventana1 extends javax.swing.JFrame {
      */
     private void delete_trActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_trActionPerformed
         trabajadores.remove(Trabajador.getSelectedRow());
+        controller.EliminarTrabajador(trabajadores.get(Trabajador.getSelectedRow()));
         PrintTrabajadores();
     }//GEN-LAST:event_delete_trActionPerformed
 
@@ -1371,6 +1372,7 @@ public class Ventana1 extends javax.swing.JFrame {
         else{
             trabajador_aux.setGerente(false);
         }
+        controller.ModificarTrabajador(trabajador_aux);
         
         PrintTrabajadores();
         trabajador_aux = null;
@@ -1453,6 +1455,7 @@ public class Ventana1 extends javax.swing.JFrame {
      */
     private void delete_zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_zonaActionPerformed
         zonas.remove(Zona.getSelectedRow());
+        controller.EliminarZonas(zonas.get(Zona.getSelectedRow()));
         PrintZonas();
     }//GEN-LAST:event_delete_zonaActionPerformed
 
@@ -1487,6 +1490,8 @@ public class Ventana1 extends javax.swing.JFrame {
         }
         zona_aux.setCapacidad(cp);
         zona_aux.setSuperficie(sp);
+        
+        controller.ModificarZona(zona_aux);
         
         PrintZonas();
         zona_aux = null;
@@ -1602,6 +1607,7 @@ public class Ventana1 extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         animal_aux.setAnioNacNni(anio);
+        controller.ModificarAnimal(animal_aux);
         
         PrintAnimales();
         animal_aux = null;
@@ -1648,6 +1654,7 @@ public class Ventana1 extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         cliente_aux.setAnioNac(anio);
+        controller.ModificarCliente(cliente_aux);
         
         PrintClientes();
         cliente_aux = null;
@@ -1835,6 +1842,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 //si existe se inserta en el animal seleccionado
                 //si ya había una, se modifica, sino se inserta
                 animal_aux.setZonaHabitada(zn);
+                controller.ModificarZonaHabitada(animal_aux, zn);
             }
         }
         PrintZonaHabitada();
@@ -1854,6 +1862,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 //si existe se inserta en la zona seleccionada
                 //si ya había uno, se modifica, sino se inserta
                 zona_aux.setTrabajadorEncargado(tr);
+                controller.ModificarTrabajadorEncargado(zona_aux, tr);
             }
         }
         PrintTrabajadorEncargado();
@@ -1861,11 +1870,13 @@ public class Ventana1 extends javax.swing.JFrame {
 
     private void eliminar_animal_vistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_animal_vistoActionPerformed
         cliente_aux.getVAnimales().remove(Animal.getSelectedRow());
+        controller.EliminarVer(animales.get(Animal.getSelectedRow()), cliente_aux);
         PrintAnimalesVistos();
     }//GEN-LAST:event_eliminar_animal_vistoActionPerformed
 
     private void eliminar_cliente_vistoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_cliente_vistoActionPerformed
         animal_aux.getVClientesVistos().remove(Cliente.getSelectedRow());
+        controller.EliminarVer(animal_aux, clientes.get(Cliente.getSelectedRow()));
         PrintClientesVistos();
     }//GEN-LAST:event_eliminar_cliente_vistoActionPerformed
 

@@ -111,4 +111,40 @@ public class Controlador {
     public void EliminarAnimal(Animal an){
         conexion.EliminarAnimal(an);
     }
+    
+    public void EliminarTrabajador(Trabajador tr){
+        conexion.EliminarTrabajador(tr);
+    }
+    
+    public void EliminarZonas(Zona zn){
+        conexion.EliminarZonas(zn);
+    }
+    
+    public void EliminarVer(Animal an, Cliente cli){
+        conexion.EliminarVer(an, cli);
+    }
+    
+    public void ModificarCliente(Cliente cli){
+        conexion.ModificarCliente(cli);
+    }
+    
+    public void ModificarAnimal(Animal an){
+        conexion.ModificarAnimal(an);
+    }
+    
+    public void ModificarZonaHabitada(Animal an, Zona zn){
+        conexion.ModificarZonaHabitada(an, zn);
+    }
+    
+    public void ModificarTrabajador(Trabajador tr){
+        conexion.ModificarTrabajador(tr);
+    }
+    
+    public void ModificarZona(Zona zn){
+        conexion.ModificarZona(zn);
+    }
+    
+    public void ModificarTrabajadorEncargado(Zona zn, Trabajador tr){
+        conexion.ModificarTrabajadorEncargado(zn, tr);
+    }
 }

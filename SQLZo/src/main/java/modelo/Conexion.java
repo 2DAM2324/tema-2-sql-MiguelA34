@@ -334,7 +334,7 @@ public class Conexion {
     }
     
     public void AgregarZona(Zona zona){
-        String sent = "INSERT INTO zonas (id, bioma, capacidad, superficie, trabajador) VALUES (?, ?, ?, ?, ?)";
+        String sent = "INSERT INTO zonas (id, bioma, capacidad, superficie, trabajador) VALUES (?, ?, ?, ?, ?);";
         PreparedStatement sentencia = null;
         
         try{
@@ -364,7 +364,7 @@ public class Conexion {
     }
     
     public void AgregarVer(Cliente cliente, Animal animal){
-        String sent = "INSERT INTO ver (cliente, cod_animal) VALUES (?, ?)";
+        String sent = "INSERT INTO ver (cliente, cod_animal) VALUES (?, ?);";
         PreparedStatement sentencia = null;
         
         try{
@@ -391,7 +391,7 @@ public class Conexion {
     
         
     public void EliminarCliente(Cliente cliente){
-        String sent = "REMOVE FROM clientes WHERE dni = ?";
+        String sent = "REMOVE FROM clientes WHERE dni = ?;";
         PreparedStatement sentencia = null;
         
         try{
@@ -416,13 +416,258 @@ public class Conexion {
     }
     
     public void EliminarAnimal(Animal animal){
-        String sent = "REMOVE FROM animales WHERE codigo = ?";
+        String sent = "REMOVE FROM animales WHERE codigo = ?;";
         PreparedStatement sentencia = null;
         
         try{
             sentencia = conn.prepareStatement(sent);
             
             sentencia.setString(1, animal.getCodAnimal());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void EliminarTrabajador(Trabajador trabajador){
+        String sent = "REMOVE FROM trabajadores WHERE codigo = ?;";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, trabajador.getCodTrabajador());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void EliminarZonas(Zona zona){
+        String sent = "REMOVE FROM zonas WHERE id = ?;";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, zona.getIdZona());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void EliminarVer(Animal an, Cliente cli){
+        String sent = "REMOVE FROM zonas WHERE cod_animal = ? AND cliente = ?;";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, an.getCodAnimal());
+            sentencia.setString(2, cli.getDNI());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarCliente(Cliente cli){
+        String sent = "UPDATE clientes SET nombre = ?, anio_nac = ? WHERE dni = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, cli.getNombreCli());
+            sentencia.setInt(2, cli.getAnioNac());
+            sentencia.setString(3, cli.getDNI());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarAnimal(Animal an){
+        String sent = "UPDATE animales SET nombre = ?, clase = ?, nombre_cientifico = ?, anio_nac = ? WHERE codigo = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, an.getNombreAni());
+            sentencia.setString(2, an.getClase());
+            sentencia.setString(3, an.getNombreCientifico());
+            sentencia.setInt(4, an.getAnioNacAni());
+            sentencia.setString(5, an.getCodAnimal());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarZonaHabitada(Animal an, Zona zn){
+        String sent = "UPDATE animales SET id_zona = ? WHERE codigo = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, zn.getIdZona());
+            sentencia.setString(2, an.getCodAnimal());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarTrabajador(Trabajador tr){
+        String sent = "UPDATE trabajadores SET nombre = ?, numero_telefono = ?, gerente = ? WHERE codigo = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, tr.getNombreTr());
+            sentencia.setString(2, tr.getNumTelefono());
+            if(tr.getGerente() == true){
+                sentencia.setString(3, "si");
+            }
+            else{
+                sentencia.setString(3, "no");
+            }
+            sentencia.setString(4, tr.getCodTrabajador());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarZona(Zona zn){
+        String sent = "UPDATE zonas SET bioma = ?, capacidad = ?, superficie = ? WHERE id = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, zn.getBioma());
+            sentencia.setInt(2, zn.getCapacidad());
+            Float num = (float) Double.valueOf(zn.getSuperficie()).floatValue();
+            sentencia.setString(4, zn.getIdZona());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+    public void ModificarTrabajadorEncargado(Zona zn, Trabajador tr){
+        String sent = "UPDATE zonas SET trabajador = ? WHERE id = ?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, tr.getCodTrabajador());
+            sentencia.setString(2, zn.getIdZona());
             
             sentencia.executeUpdate();
         }
