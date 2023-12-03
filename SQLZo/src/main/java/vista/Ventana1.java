@@ -1756,6 +1756,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
                 if (existe == false){
                     cliente_aux.setAnimal(an);
+                    controller.AgregarVer(cliente_aux, an);
                     //System.out.println("insertado");
                 }
             }
@@ -1811,6 +1812,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 }
                 if (existe == false){
                     animal_aux.setCliente(cl);
+                    controller.AgregarVer(cl, animal_aux);
                 }
             }
         }

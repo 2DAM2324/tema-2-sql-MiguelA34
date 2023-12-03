@@ -98,4 +98,8 @@ public class Controlador {
     public void AgregarZona(Zona zn){
         conexion.AgregarZona(zn);
     }
+    
+    public void AgregarVer(Cliente cli, Animal an){
+        conexion.AgregarVer(cli, an);
+    }
 }

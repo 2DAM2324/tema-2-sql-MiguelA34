@@ -362,4 +362,56 @@ public class Conexion {
             }
         }
     }
+    
+    public void AgregarVer(Cliente cliente, Animal animal){
+        String sent = "INSERT INTO ver (cliente, cod_animal) VALUES (?, ?)";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, cliente.getDNI());
+            sentencia.setString(2, animal.getCodAnimal());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
+    
+        
+    public void EliminarCliente(Cliente cliente){
+        String sent = "REMOVE FROM clientes WHERE id==?";
+        PreparedStatement sentencia = null;
+        
+        try{
+            sentencia = conn.prepareStatement(sent);
+            
+            sentencia.setString(1, cliente.getDNI());
+            
+            sentencia.executeUpdate();
+        }
+        catch(SQLException sqle){
+            sqle.printStackTrace();
+        }
+        finally{
+            try{
+                if (sentencia != null)
+                    sentencia.close();
+            }
+            catch(SQLException sqle2){
+                sqle2.printStackTrace();
+            }
+        }
+    }
 }
